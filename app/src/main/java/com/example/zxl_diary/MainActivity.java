@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ArrayList<String> TITLE=new ArrayList<>();
     private ArrayList<String>CONTEXT=new ArrayList<>();
+    private ArrayList<String>TIME=new ArrayList<>();
     private int index;
     private boolean flag=true;
 
@@ -82,11 +83,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-    private void Read(String[] array1,String[] array2)
+    private void Read(String[] array1,String[] array2,String[] array3)
     {
+
+
         AlertDialog contect = new AlertDialog.Builder(this)
                 .setTitle(array1[index])
-                .setMessage(array2[index])
+                .setMessage(array2[index]+'\n'+array3[index])
                 .create();
         contect.show();
     }
@@ -132,12 +135,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         {
                             TITLE.add(cursor.getString(2));
                             CONTEXT.add(cursor.getString(4));
+                            TIME.add(cursor.getString(1));
                         }
                         flag=false;
                     }
 
                     String[] array1=TITLE.toArray(new String[0]);
                     String[] array2=CONTEXT.toArray(new String[0]);
+                    String[] array3=TIME.toArray(new String[0]);
+
 
                     AlertDialog check = new AlertDialog.Builder(this)
                             .setTitle("选择日记")
@@ -150,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             .setPositiveButton("查看", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int which) {
-                                    Read(array1,array2);
+                                    Read(array1,array2,array3);
                                 }
                             })
                             .setNegativeButton("删除", new DialogInterface.OnClickListener() {
