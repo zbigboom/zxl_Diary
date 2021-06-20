@@ -119,8 +119,7 @@ public class ReadWrite extends AppCompatActivity implements View.OnClickListener
              String where="NUMBER"+"="+array3[index];
 
              value2.put("CONTEXT",etReadWrite.getText().toString());
-//             value2.put("TITLE",etTitle.getText().toString());
-             value2.put("TITLE",strtime);
+             value2.put("TITLE",etTitle.getText().toString());
              value2.put("TIME",strtime);
              value2.put("NUMBER",i);
 
